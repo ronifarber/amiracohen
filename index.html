@@ -771,41 +771,5 @@ a:focus-visible,
 </footer>
 
 
-<script>
-function openWaze(event) {
-  event.preventDefault();
-
-  const lat = "31.7547863";
-  const lon = "35.2219264";
-  const appUrl = `waze://?ll=${lat},${lon}&navigate=yes`;
-  const webUrl = `https://waze.com/ul?ll=${lat}%2C${lon}&navigate=yes`;
-
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-  if (!isMobile) {
-    window.open(webUrl, "_blank", "noopener");
-    return;
-  }
-
-  // ניסיון ראשון: לפתוח את אפליקציית Waze ישירות.
-  window.location.href = appUrl;
-
-  // אם Waze לא מותקנת / הדפדפן חסם את הפתיחה, עוברים לקישור האוניברסלי.
-  const fallbackTimer = setTimeout(() => {
-    window.location.href = webUrl;
-  }, 1600);
-
-  // אם האפליקציה נפתחה, הדף עובר לרקע ומבטלים את ה-fallback.
-  const cancelFallback = () => {
-    if (document.hidden) {
-      clearTimeout(fallbackTimer);
-      document.removeEventListener("visibilitychange", cancelFallback);
-    }
-  };
-
-  document.addEventListener("visibilitychange", cancelFallback);
-}
-</script>
-
 </body>
 </html>
