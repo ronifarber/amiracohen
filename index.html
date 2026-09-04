@@ -723,9 +723,8 @@ a:focus-visible,
 
       <a href="https://waze.com/ul?ll=31.7547863%2C35.2219264&navigate=yes"
          class="icon-btn"
-         target="_blank"
-         rel="noopener"
-         aria-label="ניווט בוויז">
+         aria-label="ניווט בוויז"
+         onclick="openWaze(event)">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"
                 stroke="currentColor"
@@ -770,6 +769,43 @@ a:focus-visible,
 <footer class="site-footer">
   <p>אמירה כהן · G&amp;A גפני ואחדות</p>
 </footer>
+
+
+<script>
+function openWaze(event) {
+  event.preventDefault();
+
+  const lat = "31.7547863";
+  const lon = "35.2219264";
+  const appUrl = `waze://?ll=${lat},${lon}&navigate=yes`;
+  const webUrl = `https://waze.com/ul?ll=${lat}%2C${lon}&navigate=yes`;
+
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (!isMobile) {
+    window.open(webUrl, "_blank", "noopener");
+    return;
+  }
+
+  // ניסיון ראשון: לפתוח את אפליקציית Waze ישירות.
+  window.location.href = appUrl;
+
+  // אם Waze לא מותקנת / הדפדפן חסם את הפתיחה, עוברים לקישור האוניברסלי.
+  const fallbackTimer = setTimeout(() => {
+    window.location.href = webUrl;
+  }, 1600);
+
+  // אם האפליקציה נפתחה, הדף עובר לרקע ומבטלים את ה-fallback.
+  const cancelFallback = () => {
+    if (document.hidden) {
+      clearTimeout(fallbackTimer);
+      document.removeEventListener("visibilitychange", cancelFallback);
+    }
+  };
+
+  document.addEventListener("visibilitychange", cancelFallback);
+}
+</script>
 
 </body>
 </html>
