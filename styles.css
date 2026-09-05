@@ -416,16 +416,19 @@ section h2 { font-size: clamp(2rem, 3.3vw, 2.8rem); line-height: 1.3; }
   font-size: 1.125rem;
   line-height: 1.5;
 }
-/* הגדלת לוגו החברה */
-.logo-img {
-  height: 265px;
-  width: auto;
-  max-width: min(90vw, 650px);
+/* לוגו החברה בראש העמוד */
+.logo-bar .logo-img {
+  width: 700px;
+  height: auto;
+  max-width: 95%;
+  max-height: none;
   object-fit: contain;
 }
 
 @media (max-width: 560px) {
-  .logo-img {
-    height: 185px;
+  .logo-bar .logo-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
   }
 }
