@@ -1,23 +1,19 @@
-/* ===== Tokens ===== */
-:root {
-  --ink: #16223B;
-  --ink-soft: #202F4E;
-  --parchment: #F4F2EC;
-  --parchment-warm: #E9E4D6;
-  --brick: #16223B;
-  --brass: #C9A227;
-  --sage: #16223B;
-  --text-dark: #1C2333;
-  --text-on-ink: #F4F2EC;
-  --line: rgba(28, 35, 51, 0.14);
-  --line-on-ink: rgba(244, 242, 236, 0.22);
+/* ===== צבעים ועיצוב בסיסי ===== */
 
-  --font-display: Arial, sans-serif;
-  --font-body: Arial, sans-serif;
+:root {
+  --navy: #16223B;
+  --navy-soft: #202F4E;
+  --gold: #C9A227;
+  --paper: #F4F2EC;
+  --paper-alt: #E9E4D6;
+  --text: #1C2333;
+  --line: rgba(28, 35, 51, 0.14);
+  --shadow: 0 8px 24px rgba(22, 34, 59, 0.05);
 }
 
-/* ===== Global ===== */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -27,61 +23,71 @@ html {
 
 body {
   margin: 0;
-  background: var(--parchment);
-  color: var(--text-dark);
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.7;
+  background: var(--paper);
+  color: var(--text);
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  margin: 0;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  font-family: inherit;
 }
 
 a {
   color: inherit;
 }
 
-/* ===== Logo bar ===== */
+img {
+  max-width: 100%;
+}
+
+/* ===== לוגו ===== */
+
 .logo-bar {
-  background: #FFFFFF;
-  text-align: center;
-  padding: 2.6rem 1.5rem;
+  padding: 2.4rem 1.5rem;
+  background: #fff;
   border-bottom: 1px solid var(--line);
+  text-align: center;
 }
 
 .logo-img {
-  height: 220px;
+  display: inline-block;
   width: auto;
+  height: 210px;
   max-width: min(90vw, 520px);
   object-fit: contain;
-  display: inline-block;
 }
 
-@media (max-width: 560px) {
-  .logo-bar {
-    padding: 1.8rem 1rem;
-  }
+/* ===== אזור פתיחה ===== */
 
-  .logo-img {
-    height: 150px;
-  }
-}
-
-/* ===== Hero ===== */
 .hero {
-  background-color: var(--ink);
-  background-image:
-    linear-gradient(rgba(22, 34, 59, 0.86), rgba(22, 34, 59, 0.94)),
-    url('assets/jerusalem-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  color: var(--text-on-ink);
-  padding: 5.2rem 1.5rem 4.8rem;
+  padding: 5rem 1.5rem 4.6rem;
+  background:
+    linear-gradient(
+      rgba(22, 34, 59, 0.86),
+      rgba(22, 34, 59, 0.94)
+    ),
+    url("assets/jerusalem-bg.jpg") 62% center / cover no-repeat;
+  color: var(--paper);
   text-align: center;
 }
 
@@ -93,77 +99,82 @@ a {
 .hero-photo {
   width: 220px;
   height: 220px;
-  border-radius: 50%;
-  border: 3px solid var(--brass);
   margin: 0 auto 2rem;
   overflow: hidden;
-  background: var(--ink-soft);
+  background: var(--navy-soft);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
 }
 
 .hero-photo img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  display: block;
 }
 
 .hero-eyebrow {
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  color: var(--brass);
   margin-bottom: 1rem;
+  color: var(--gold);
+  font-size: 1.125rem;
   letter-spacing: 0.02em;
 }
 
 .hero-name {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 4.4rem);
-  line-height: 1.08;
   margin-bottom: 0.8rem;
+  color: var(--paper);
+  font-size: clamp(3rem, 6vw, 4.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.hero-license {
+  margin: 0 0 1rem;
+  color: var(--paper);
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
 
 .hero-title {
-  font-size: 1.35rem;
-  color: var(--text-on-ink);
-  opacity: 0.88;
-  margin: 0 0 1.8rem;
+  margin-bottom: 1.8rem;
+  color: var(--paper);
+  font-size: clamp(1.25rem, 2.6vw, 1.65rem);
 }
 
 .hero-slogan {
   position: relative;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4vw, 2.15rem);
-  color: var(--brass);
-  letter-spacing: 0.01em;
-  margin: 0 auto 2.6rem;
   max-width: 620px;
-  padding: 0 0 1.7rem;
+  margin: 0 auto 2.6rem;
+  padding-bottom: 1.7rem;
+  color: var(--gold);
+  font-size: clamp(1.65rem, 3.8vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .hero-slogan::after {
   content: "";
   position: absolute;
-  bottom: 0;
   right: 50%;
-  transform: translateX(50%);
+  bottom: 0;
   width: 74px;
   height: 2px;
-  background: var(--brass);
+  background: var(--gold);
+  transform: translateX(50%);
 }
 
 .hero-cta {
   display: inline-block;
-  text-decoration: none;
-  background: var(--brass);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.05rem;
+  min-height: 48px;
   padding: 0.95rem 2.5rem;
-  border-radius: 3px;
+  background: var(--gold);
+  color: var(--navy);
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: none;
   transition:
     transform 0.15s ease,
     filter 0.15s ease;
@@ -174,24 +185,18 @@ a {
   filter: brightness(1.04);
 }
 
-@media (max-width: 560px) {
-  .hero {
-    padding: 3.7rem 1.2rem 3.5rem;
-  }
+/* ===== מבנה אזורי העמוד ===== */
 
-  .hero-photo {
-    width: 170px;
-    height: 170px;
-  }
-
-  .hero-title {
-    font-size: 1.12rem;
-  }
+section {
+  padding: 4.3rem 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
 }
 
-/* ===== Layout ===== */
-main {
-  width: 100%;
+.specialties,
+.listings {
+  background: var(--paper-alt);
 }
 
 .section-inner {
@@ -200,169 +205,122 @@ main {
   padding: 0 2rem;
 }
 
-section {
-  padding: 4.3rem 0;
-  border-bottom: 1px solid var(--line);
-  text-align: center;
-}
-
-.about {
-  background: var(--parchment);
-}
-
-.specialties {
-  background: var(--parchment-warm);
-}
-
-.testimonials {
-  background: var(--parchment);
-}
-
-.listings {
-  background: var(--parchment-warm);
-}
-
-.contact {
-  background: var(--parchment);
-}
-
 section h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 3vw, 2.6rem);
   margin-bottom: 1.7rem;
-  color: var(--ink);
+  font-size: clamp(2rem, 3.3vw, 2.8rem);
+  line-height: 1.3;
 }
 
-.placeholder-text {
-  color: var(--text-dark);
-  opacity: 0.75;
-  font-style: normal;
-  max-width: 70ch;
-  margin-inline: auto;
-  font-size: 1.07rem;
-  line-height: 1.85;
+/* ===== אודות ===== */
+
+.about p {
+  max-width: 65ch;
+  margin: 0 auto 1.25rem;
+  line-height: 1.9;
 }
 
-@media (max-width: 560px) {
-  .section-inner {
-    padding: 0 1.2rem;
-  }
-
-  section {
-    padding: 3.2rem 0;
-  }
-
-  body {
-    font-size: 17px;
-  }
+.about p:last-child {
+  margin-bottom: 0;
 }
 
-/* ===== Specialties ===== */
-.specialties-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-  max-width: 900px;
-  margin-inline: auto;
-}
+/* ===== כרטיסים ===== */
 
-.specialty-card {
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--brass);
-  padding: 2.4rem 2rem;
-  text-align: center;
-  min-height: 210px;
-  box-shadow: 0 8px 24px rgba(22, 34, 59, 0.05);
-}
-
-.specialty-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--ink);
-  margin-bottom: 0.9rem;
-}
-
-.specialty-card p {
-  margin: 0;
-  color: var(--text-dark);
-  opacity: 0.85;
-  font-size: 1.05rem;
-  line-height: 1.75;
-}
-
-@media (max-width: 560px) {
-  .specialties-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .specialty-card {
-    padding: 2rem 1.4rem;
-    min-height: auto;
-  }
-}
-
-/* ===== Testimonials ===== */
+.specialties-grid,
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
-  max-width: 960px;
-  margin-inline: auto;
+  margin: 0 auto;
 }
+
+.specialties-grid {
+  max-width: 900px;
+}
+
+.testimonials-grid {
+  max-width: 960px;
+  align-items: stretch;
+}
+
+.specialty-card,
+.testimonial-card,
+.listing-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.specialty-card,
+.testimonial-card {
+  border-radius: 10px;
+}
+
+/* ===== תחומי התמחות ===== */
+
+.specialty-card {
+  min-height: 210px;
+  padding: 2.1rem 1.8rem;
+  border-top: 4px solid var(--gold);
+}
+
+.specialty-card h3 {
+  margin-bottom: 0.9rem;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+  line-height: 1.4;
+}
+
+.specialty-card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+/* ===== המלצות ומרכאות ===== */
 
 .testimonial-card {
   position: relative;
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  padding: 3rem 2.2rem 2.2rem;
-  text-align: center;
-  box-shadow: 0 8px 24px rgba(22, 34, 59, 0.05);
-}
-
-.testimonial-card::before {
-  content: "”";
-  position: absolute;
-  top: 0.45rem;
-  right: 50%;
-  transform: translateX(50%);
-  font-family: var(--font-display);
-  font-size: 3.3rem;
-  line-height: 1;
-  color: var(--brass);
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem 1.8rem 1.8rem;
 }
 
 .testimonial-quote {
-  font-family: var(--font-display);
-  font-size: 1.32rem;
-  font-weight: 500;
-  line-height: 1.85;
-  color: var(--ink);
-  margin: 0 0 1.2rem;
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.25rem, 2.1vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.quote-mark {
+  display: block;
+  height: 2.4rem;
+  color: #987619;
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+}
+
+.quote-open {
+  margin-bottom: 0.6rem;
+}
+
+.quote-close {
+  margin-top: 0.7rem;
 }
 
 .testimonial-author {
-  font-family: var(--font-body);
-  color: var(--sage);
-  font-size: 1rem;
+  margin: auto 0 0;
+  padding-top: 1rem;
+  color: var(--navy);
+  font-size: 1.125rem;
   font-weight: 700;
-  letter-spacing: 0.01em;
-  margin: 0;
+  line-height: 1.5;
 }
 
-@media (max-width: 560px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
+/* ===== נכסים ===== */
 
-  .testimonial-card {
-    padding: 2.6rem 1.5rem 1.8rem;
-  }
-}
-
-/* ===== Listings ===== */
 .listings-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -370,24 +328,19 @@ section h2 {
 }
 
 .listing-card {
-  aspect-ratio: 16 / 11;
-  border: 1px solid var(--line);
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-dark);
-  background: #FFFFFF;
-  font-size: 1rem;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
   text-align: center;
-  box-shadow: 0 8px 24px rgba(22, 34, 59, 0.05);
 }
 
 .listing-card img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transition: transform 0.25s ease;
 }
 
@@ -395,64 +348,46 @@ section h2 {
   transform: scale(1.025);
 }
 
-@media (max-width: 760px) {
-  .listings-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 520px) {
-  .listings-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .listings-link {
-  margin-top: 1.8rem;
+  margin: 1.8rem 0 0;
+  font-size: 1.1875rem;
 }
 
 .listings-link a {
-  font-family: var(--font-body);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--brass);
+  color: var(--navy);
+  border-bottom: 1px solid var(--gold);
   font-weight: 700;
-  font-size: 1.05rem;
+  text-decoration: none;
 }
 
-/* ===== Contact ===== */
+/* ===== יצירת קשר ===== */
+
 .contact-icons {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.4rem;
   margin-bottom: 3rem;
 }
 
 .icon-btn {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.65rem;
+  width: 104px;
+  color: var(--navy);
   text-decoration: none;
-  color: var(--ink);
-  width: 96px;
-}
-
-.icon-btn::before {
-  content: "";
-  display: block;
 }
 
 .icon-btn svg {
   width: 28px;
   height: 28px;
-  color: var(--parchment);
-  background: var(--ink);
-  border-radius: 50%;
   padding: 15px;
   box-sizing: content-box;
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: 50%;
   transition:
     background 0.15s ease,
     transform 0.15s ease;
@@ -460,24 +395,21 @@ section h2 {
 
 .icon-btn:hover svg,
 .icon-btn:focus-visible svg {
-  background: var(--brass);
+  background: var(--gold);
+  color: var(--navy);
   transform: translateY(-2px);
 }
 
 .icon-btn span {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: var(--text-dark);
-  opacity: 0.8;
+  font-size: 1.0625rem;
 }
 
 .contact-list {
-  list-style: none;
-  margin: 0;
+  max-width: 640px;
+  margin: 0 auto;
   padding: 0;
-  max-width: 560px;
-  margin-inline: auto;
-  font-size: 1.04rem;
+  list-style: none;
+  font-size: 1.1875rem;
 }
 
 .contact-list li {
@@ -490,41 +422,136 @@ section h2 {
 }
 
 .contact-list li:last-child {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 .contact-label {
   min-width: 120px;
-  color: var(--sage);
+  color: var(--navy);
   font-weight: 700;
 }
 
-.contact-value a {
+.contact-value {
+  color: var(--navy);
   text-decoration: none;
-  border-bottom: 1px solid var(--brick);
-  color: var(--brick);
+  border-bottom: 1px solid var(--navy);
+  overflow-wrap: anywhere;
 }
 
-.placeholder-value {
-  opacity: 0.7;
+.contact-value[href^="tel:"],
+.contact-value[href^="mailto:"] {
+  direction: ltr;
+  unicode-bidi: isolate;
 }
 
-/* ===== Footer ===== */
+/* ===== תחתית העמוד ===== */
+
 .site-footer {
-  text-align: center;
   padding: 2.5rem 1.5rem 3.2rem;
-  color: var(--text-dark);
-  opacity: 0.62;
-  font-family: var(--font-body);
-  font-size: 0.96rem;
+  color: var(--text);
+  font-size: 1.0625rem;
+  text-align: center;
+  opacity: 0.8;
 }
 
-/* ===== Accessibility ===== */
-a:focus-visible,
-.hero-cta:focus-visible {
-  outline: 2px solid var(--brass);
+.site-footer p {
+  margin: 0;
+}
+
+/* ===== נגישות ===== */
+
+a:focus-visible {
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
 }
+
+/* ===== התאמה לטאבלט ===== */
+
+@media (max-width: 760px) {
+  .specialties-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .listings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== התאמה לטלפון ===== */
+
+@media (max-width: 560px) {
+  body {
+    font-size: 18px;
+  }
+
+  .logo-bar {
+    padding: 1.7rem 1rem;
+  }
+
+  .logo-img {
+    height: 145px;
+  }
+
+  .hero {
+    padding: 2.7rem 1.2rem 2.8rem;
+    background-position: 68% center;
+  }
+
+  .hero-photo {
+    width: 170px;
+    height: 170px;
+  }
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
+  section {
+    padding: 3.2rem 0;
+  }
+
+  .section-inner {
+    padding: 0 1.2rem;
+  }
+
+  .listings-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .specialty-card {
+    min-height: auto;
+    padding: 1.7rem 1.3rem;
+  }
+
+  .specialty-card p {
+    font-size: 1.1875rem;
+  }
+
+  .testimonial-card {
+    padding: 1.4rem 1.3rem 1.5rem;
+  }
+
+  .testimonial-quote {
+    font-size: 1.25rem;
+  }
+
+  .contact-icons {
+    gap: 1.2rem 0.5rem;
+  }
+
+  .icon-btn {
+    width: 88px;
+  }
+
+  .contact-list {
+    font-size: 1.125rem;
+  }
+}
+
+/* ===== הפחתת תנועה בהתאם להגדרות המשתמש ===== */
 
 @media (prefers-reduced-motion: reduce) {
   html {
