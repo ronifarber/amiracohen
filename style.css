@@ -436,39 +436,40 @@ section h2 { font-size: clamp(2rem, 3.3vw, 2.8rem); line-height: 1.3; }
 @media (max-width: 560px) {
   .logo-bar .logo-img { width: 260px; }
 }
-/* טיפוגרפיה מאוזנת באזור הפתיחה */
+
+/* טיפוגרפיה מוגדלת באזור הפתיחה */
 .hero-name {
-  font-size: 42px;
+  font-size: 50px;
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   letter-spacing: normal;
 }
 
 .hero-eyebrow,
 .hero-license,
 .hero-title {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .hero-slogan {
-  font-size: 26px;
+  font-size: 30px;
   line-height: 1.5;
 }
 
 @media (max-width: 560px) {
   .hero-name {
-    font-size: 34px;
+    font-size: 40px;
   }
 
   .hero-eyebrow,
   .hero-license,
   .hero-title {
-    font-size: 18px;
+    font-size: 21px;
   }
 
   .hero-slogan {
-    font-size: 22px;
+    font-size: 25px;
   }
 }
